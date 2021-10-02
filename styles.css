@@ -1,0 +1,14 @@
+.grid{
+    width: 400px;
+    height: 400px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.square{
+    height: 140px;
+    width: 140px;
+    display: grid;
+    place-items: center;
+    border: 1px solid black;
+}
