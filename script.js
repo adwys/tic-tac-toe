@@ -10,7 +10,6 @@ const ticTacToe = () => {
         ['','',''],
         ['','',''],
     ]   
-    console.log(board);
     const square = document.querySelectorAll(".square");
     const grid = document.querySelector(".grid");
     const container = document.querySelector(".container");
@@ -115,7 +114,6 @@ const ticTacToe = () => {
         ['','',''],
         ]
         square.forEach(div => {
-            console.log(div.children[0]);
             if(div.children[0])
                 div.children[0].remove();
         })
