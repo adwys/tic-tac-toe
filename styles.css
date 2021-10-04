@@ -10,5 +10,61 @@
     width: 140px;
     display: grid;
     place-items: center;
-    border: 1px solid black;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 7rem;
+
+    margin: 1px;
+    border-radius: 2rem;
+    -webkit-box-shadow: 5px 5px 15px -5px #000000; 
+    box-shadow: 5px 5px 15px -5px #000000;
+    transition: 0.5s;
+}
+
+span{
+    height: 140px;
+    width: 140px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.square:hover {
+    background-color: rgb(212, 209, 209);
+}
+
+
+
+#game_end{
+    /* border: 1px solid green; */
+    margin: 10px;
+    font-weight: bolder;
+    font-size:  xx-large;
+}
+
+.container{
+    min-width: 90vw;
+    min-height: 90vh;
+    display: flex;
+    flex-direction:column; 
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    font-weight: bolder ;
+    font-size: large;
+    width: 10%;
+    min-height: 10%;
+    margin: 15px;
+    border-radius: 6rem;
+    -webkit-box-shadow: 5px 5px 15px -5px #000000; 
+    box-shadow: 5px 5px 15px -5px #000000;
+    background-color: white;
+    transition: 0.5s;
+}
+
+button:hover{
+    background-color: rgb(212, 209, 209);
 }

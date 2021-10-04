@@ -3,6 +3,8 @@
 
 const ticTacToe = () => {
 
+    let game_ended = false;
+
     let board = [
         ['','',''],
         ['','',''],
@@ -10,9 +12,12 @@ const ticTacToe = () => {
     ]   
     console.log(board);
     const square = document.querySelectorAll(".square");
-
+    const grid = document.querySelector(".grid");
+    const container = document.querySelector(".container");
     const add_x = (div,x) => {
-        div.textContent = x;
+        let sp = document.createElement('span');
+        sp.textContent = x;
+        div.prepend(sp);
     }
 
     const check_end = (x) => {
@@ -67,7 +72,7 @@ const ticTacToe = () => {
     }
 
     const computer_move = (x) => {
-        
+ 
         while(true){
             if(is_full())return;
             let d = Math.floor(Math.random() * (8 - 0)) + 0;
@@ -81,12 +86,54 @@ const ticTacToe = () => {
         
     }
 
+    const end_game = (x) => {
+        
+        if(game_ended)return;   
+        
+        let reset_btn = document.createElement('button');
+        reset_btn.textContent = "Reset";
+        reset_btn.addEventListener('click', () => {
+            reset();
+        })
+        container.prepend(reset_btn);
+        let text = document.createElement('div');
+        if(x == 'full' && !game_ended)text.textContent = 'Tie';
+        else if(x =='x' || x == 'o') text.textContent = "Player " + x.toUpperCase() + " wins";
+        text.setAttribute('id','game_end');
+        container.prepend(text);
+        game_ended=true;
+
+        
+    }
+
+    const reset = () => {
+        game_ended = false;
+
+        board = [
+        ['','',''],
+        ['','',''],
+        ['','',''],
+        ]
+        square.forEach(div => {
+            console.log(div.children[0]);
+            if(div.children[0])
+                div.children[0].remove();
+        })
+        container.children[0].remove();
+        container.children[0].remove();
+    }
+
     square.forEach(div => {
         div.addEventListener('click', () => {
-            if(board[parseInt(div.id/3)][div.id%3] != "")return;
+            if(board[parseInt(div.id/3)][div.id%3] != "" || game_ended)return;
             board[parseInt(div.id/3)][div.id%3] = "x";
             add_x(div,"x");
-            computer_move("o");
+            if(check_end("x")) end_game("x");
+            else{
+                computer_move("o");
+                if(check_end("o")) end_game("o");
+            }
+            if(is_full())end_game("full");
         })
     })
 };
